@@ -8,7 +8,7 @@ from cashbook.merchants.models import Merchant
 
 
 class Transaction(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, editable=False)
     date = models.DateField()
     merchant = models.ForeignKey(Merchant)
     products = models.ManyToManyField(Product)
