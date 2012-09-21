@@ -12,7 +12,7 @@ class Transaction(models.Model):
     date = models.DateField()
     merchant = models.ForeignKey(Merchant)
     products = models.ManyToManyField(Product, through='TransactionProduct')
-    currency = models.ForeignKey(Currency)
+    currency = models.ForeignKey(Currency, default=0)
 
     def __unicode__(self):
         return u'%s Transaction from %s' % (unicode(self.date), unicode(self.merchant))
