@@ -1,11 +1,15 @@
 from django.db import models
-
+from django.utils.translation import gettext_lazy as _
 
 class Country(models.Model):
     name = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
 
 
 class State(models.Model):
@@ -14,6 +18,10 @@ class State(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _("State")
+        verbose_name_plural = _("States")
 
 
 class City(models.Model):
@@ -24,6 +32,10 @@ class City(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _("City")
+        verbose_name_plural = _("Cities")
+
 
 class Address(models.Model):
     street = models.CharField(max_length=255)
@@ -32,3 +44,7 @@ class Address(models.Model):
 
     def __unicode__(self):
         return u'%s,  %s %s' % (self.city.name, self.street, self.street_number)
+
+    class Meta:
+        verbose_name = _("Address")
+        verbose_name_plural = _("Addresses")
