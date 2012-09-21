@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class Country(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(_("Name"), max_length=255)
 
     def __unicode__(self):
         return self.name
@@ -13,8 +13,8 @@ class Country(models.Model):
 
 
 class State(models.Model):
-    name = models.CharField(max_length=255)
-    country = models.ForeignKey(Country)
+    name = models.CharField(_("Name"), max_length=255)
+    country = models.ForeignKey(Country, verbose_name=_("Country"))
 
     def __unicode__(self):
         return self.name
@@ -25,9 +25,9 @@ class State(models.Model):
 
 
 class City(models.Model):
-    name = models.CharField(max_length=255)
-    zipcode = models.PositiveIntegerField()
-    state = models.ForeignKey(State)
+    name = models.CharField(_("Name"), max_length=255)
+    zipcode = models.PositiveIntegerField(_("ZIP Code"))
+    state = models.ForeignKey(State, verbose_name=_("State"))
 
     def __unicode__(self):
         return self.name
@@ -38,9 +38,9 @@ class City(models.Model):
 
 
 class Address(models.Model):
-    street = models.CharField(max_length=255)
-    street_number = models.PositiveSmallIntegerField()
-    city = models.ForeignKey(City)
+    street = models.CharField(_("Street"), max_length=255)
+    street_number = models.PositiveSmallIntegerField(_("Street number"))
+    city = models.ForeignKey(City, verbose_name=_("City"))
 
     def __unicode__(self):
         return u'%s,  %s %s' % (self.city.name, self.street, self.street_number)
