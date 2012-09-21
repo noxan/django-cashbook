@@ -16,6 +16,12 @@ class Transaction(models.Model):
     value = models.DecimalField(max_digits=12, decimal_places=2, default=0.0, blank=True, editable=False)
     comment = models.TextField(blank=True)
 
+    def calculate_value(self, delta=0):
+        self.value = delta
+        for product in self.transactionproduct_set.all():
+            self.value += product.price * product.quantity
+        self.save()
+
     def __unicode__(self):
         return u'%s Transaction from %s' % (unicode(self.date), unicode(self.merchant))
 
