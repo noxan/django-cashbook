@@ -119,6 +119,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     # cashbook internal apps
     'cashbook.transactions',
+    'cashbook.products',
+    'cashbook.merchants',
 )
 
 # A sample logging configuration. The only tangible logging
