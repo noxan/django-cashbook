@@ -39,6 +39,9 @@ class TransactionProduct(models.Model):
     quantity = models.PositiveSmallIntegerField(_("Quantity"), default=1)
     price = models.DecimalField(_("Price"), max_digits=12, decimal_places=2)
 
+    def __unicode__(self):
+        return unicode(self.product)
+
     class Meta:
         verbose_name = _("Transaction product")
         verbose_name_plural = _("Transaction products")
