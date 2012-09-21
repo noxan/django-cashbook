@@ -10,6 +10,7 @@ class TransactionProductInline(admin.TabularInline):
 
 class TransactionAdmin(admin.ModelAdmin):
     inlines = (TransactionProductInline, )
+    list_display = ('owner', 'date', 'merchant', 'value', 'currency')
 
     def save_model(self, request, obj, form, change):
         try:
