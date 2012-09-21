@@ -13,6 +13,7 @@ class Transaction(models.Model):
     merchant = models.ForeignKey(Merchant)
     products = models.ManyToManyField(Product, through='TransactionProduct')
     currency = models.ForeignKey(Currency, default=0)
+    value = models.DecimalField(max_digits=12, decimal_places=2, default=0.0, blank=True, editable=False)
     comment = models.TextField(blank=True)
 
     def __unicode__(self):
