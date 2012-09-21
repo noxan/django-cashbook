@@ -117,6 +117,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    # cashbook external apps
+    'currencies',
     # cashbook internal apps
     'cashbook.transactions',
     'cashbook.products',
