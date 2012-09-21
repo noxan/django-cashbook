@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import m2m_changed, post_save, pre_delete
+from django.dispatch import receiver
 
 from currencies.models import Currency
 
@@ -30,3 +32,16 @@ class TransactionProduct(models.Model):
     product = models.ForeignKey(Product)
     quantity = models.PositiveSmallIntegerField(default=1)
     price = models.DecimalField(max_digits=12, decimal_places=2)
+
+@receiver(post_save, sender=TransactionProduct)
+def product_saved(sender, instance, created, raw, using, **kwargs):
+    instance.transaction.calculate_value()
+
+@receiver(pre_delete, sender=TransactionProduct)
+def product_deleted(sender, instance, using, **kwargs):
+    instance.transaction.calculate_value()
+
+@receiver(m2m_changed, sender=Transaction.products.through)
+def products_changed(sender, instance, action, reverse, model, pk_set, using, **kwargs):
+    if action == 'post_add':
+        instance.calculate_value()
