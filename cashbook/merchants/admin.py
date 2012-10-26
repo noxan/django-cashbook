@@ -3,4 +3,7 @@ from django.contrib import admin
 from cashbook.merchants.models import Merchant
 
 
-admin.site.register(Merchant)
+class MerchantAdmin(admin.ModelAdmin):
+    list_display = ('name', 'address')
+
+admin.site.register(Merchant, MerchantAdmin)
