@@ -11,7 +11,9 @@ class Merchant(models.Model):
     address = models.ForeignKey(Address, verbose_name=_("Address"), blank=True, null=True)
 
     def __unicode__(self):
-        return u'%s %s' % (self.name, self.address)
+        if self.address:
+            return u'%s %s' % (self.name, self.address)
+        return self.name
 
     class Meta:
         verbose_name = _("Merchant")
