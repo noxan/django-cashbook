@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     # cashbook external apps
+    'south',
     'currencies',
     # cashbook internal apps
     'cashbook.addresses',
