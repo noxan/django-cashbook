@@ -37,14 +37,23 @@ class City(models.Model):
         verbose_name = _("City")
         verbose_name_plural = _("Cities")
 
-
-class Address(models.Model):
+class Street(models.Model):
     street = models.CharField(_("Street"), max_length=255)
-    street_number = models.PositiveSmallIntegerField(_("Street number"))
     city = models.ForeignKey(City, verbose_name=_("City"))
 
     def __unicode__(self):
-        return u'%s,  %s %s' % (self.city.name, self.street, self.street_number)
+        return u'%s, %s' % (self.city.name, self.street)
+
+    class Meta:
+        verbose_name = _("Street")
+        verbose_name_plural = _("Streets")
+
+class Address(models.Model):
+    street = models.ForeignKey(Street)
+    street_number = models.PositiveSmallIntegerField(_("Street number"))
+
+    def __unicode__(self):
+        return u'%s %s' % (unicode(self.street), self.street_number)
 
     class Meta:
         verbose_name = _("Address")
