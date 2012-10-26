@@ -1,0 +1,9 @@
+{{callback}}([
+{% for merchant in merchant_list.all %}
+{
+"name": "{{merchant.name}}",
+"website": "{{merchant.website}}",
+"address": "{{merchant.address}}",
+},
+{% endfor %}
+])
