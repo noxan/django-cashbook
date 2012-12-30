@@ -122,9 +122,9 @@ INSTALLED_APPS = (
     'currencies',
     # cashbook internal apps
     'cashbook.addresses',
-    'cashbook.transactions',
-    'cashbook.products',
     'cashbook.merchants',
+    'cashbook.products',
+    'cashbook.transactions',
 )
 
 # A sample logging configuration. The only tangible logging
