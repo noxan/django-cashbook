@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'south',
     'currencies',
     # cashbook internal apps
+    'cashbook.common',
     'cashbook.addresses',
     'cashbook.merchants',
     'cashbook.products',
