@@ -2,3 +2,4 @@ django==1.4.3
 south==0.7.6
 django-currencies==0.3.1
 psycopg2==2.4.6
+django-staticfiles-bootstrap==2.3.0
