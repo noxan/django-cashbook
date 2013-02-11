@@ -6,5 +6,5 @@ environment:
 requirements: environment
 	$(VIRTUALENV)/bin/pip install -r requirements.txt
 
-runserver:
-	$(VIRTUALENV)/bin/python manage.py runserver
+server:
+	$(VIRTUALENV)/bin/python manage.py runserver 0.0.0.0:8000
