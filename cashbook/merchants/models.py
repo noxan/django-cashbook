@@ -18,3 +18,4 @@ class Merchant(models.Model):
     class Meta:
         verbose_name = _("Merchant")
         verbose_name_plural = _("Merchants")
+        ordering = ['name', 'id']
