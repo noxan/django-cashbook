@@ -125,6 +125,8 @@ INSTALLED_APPS = (
     'cashbook.merchants',
     'cashbook.products',
     'cashbook.transactions',
+    # frontend
+    'bootstrap',
 )
 
 # A sample logging configuration. The only tangible logging
