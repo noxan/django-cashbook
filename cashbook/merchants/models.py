@@ -11,6 +11,12 @@ class Merchant(models.Model):
     phone = models.CharField(_("Phone number"), blank=True, null=True, max_length=128)
     address = models.ForeignKey(Address, verbose_name=_("Address"), blank=True, null=True)
 
+    def get_website_display(self):
+        return get_display_none(self.website)
+
+    def get_phone_display(self):
+        return get_display_none(self.phone)
+
     def get_address_display(self):
         return get_display_none(self.address)
 
