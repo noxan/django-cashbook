@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from cashbook.common.utils import get_display_none
 from cashbook.addresses.models import Address
 
 
@@ -11,9 +12,7 @@ class Merchant(models.Model):
     address = models.ForeignKey(Address, verbose_name=_("Address"), blank=True, null=True)
 
     def get_address_display(self):
-        if self.address:
-            return unicode(self.address)
-        return u'-'
+        return get_display_none(self.address)
 
     def __unicode__(self):
         if self.address:
