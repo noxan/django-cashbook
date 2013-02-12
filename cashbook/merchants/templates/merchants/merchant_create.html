@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load bootstrap %}
+
+{% block content %}
+<form method="post" action="{% url merchants:create %}">
+  {% csrf_token %}
+  {{form|bootstrap}}
+  <input type="submit" class="btn btn-primary" />
+  <a href="{% url merchants:list %}" class="btn">Cancel</a>
+</form>
+{% endblock %}
