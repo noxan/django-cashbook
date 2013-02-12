@@ -3,6 +3,7 @@
 {% block content %}
 <table class="table">
   <tr>
+    <th>#</th>
     <th>Date</th>
     <th>Merchant</th>
     <th>Products</th>
@@ -10,6 +11,7 @@
   </tr>
   {% for transaction in transaction_list %}
   <tr>
+    <td>{{transaction.id}}</td>
     <td>{{transaction.date}}</td>
     <td>{{transaction.merchant}}</td>
     <td>{{transaction.products.count}}</td>
