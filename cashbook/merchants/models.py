@@ -10,6 +10,11 @@ class Merchant(models.Model):
     phone = models.CharField(_("Phone number"), blank=True, null=True, max_length=128)
     address = models.ForeignKey(Address, verbose_name=_("Address"), blank=True, null=True)
 
+    def get_address_display(self):
+        if self.address:
+            return unicode(self.address)
+        return u'-'
+
     def __unicode__(self):
         if self.address:
             return u'%s %s' % (self.name, self.address)
