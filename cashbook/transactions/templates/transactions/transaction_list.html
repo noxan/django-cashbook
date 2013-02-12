@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for transaction in transaction_list %}
-{{transaction}}
-{% endfor %}
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>Merchant</th>
+    <th>Products</th>
+    <th>Value</th>
+  </tr>
+  {% for transaction in transaction_list %}
+  <tr>
+    <td>{{transaction.date}}</td>
+    <td>{{transaction.merchant}}</td>
+    <td>{{transaction.products.count}}</td>
+    <td>{{transaction.value}} {{transaction.currency.symbol}}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
